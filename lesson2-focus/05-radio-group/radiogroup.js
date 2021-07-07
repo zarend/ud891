@@ -32,6 +32,10 @@
         e.preventDefault();
 
         // This seems like a good place to do some stuff :)
+        this.changeFocus(
+          this.focusedIdx === 0 ? this.buttons.length - 1 : this.focusedIdx - 1
+	);
+	
 
         break;
 
@@ -43,13 +47,12 @@
         e.preventDefault();
 
         // This seems like a good place to do some stuff :)
+        this.changeFocus((this.focusedIdx + 1) % this.buttons.length);
 
         break;
       }
 
     }
-
-    this.changeFocus(this.focusedIdx); // <-- Hmm, interesting...
   };
 
   RadioGroup.prototype.changeFocus = function(idx) {
@@ -62,6 +65,8 @@
     this.focusedButton.tabIndex = 0;
     this.focusedButton.focus();
     this.focusedButton.setAttribute('checked', 'checked');
+
+    this.focusedIdx = idx;
   };
 
   var group1 = new RadioGroup('#group1');
