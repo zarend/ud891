@@ -2,6 +2,8 @@ page('/', function() {
   page.redirect('/what-is-vegemite');
 });
 
+var isInitialLoad = true;
+
 page('/:slug', function(context) {
   // This will match any value after the first / in the url. For example, if
   // the url was /foo, the value of slug would be "foo".
@@ -19,6 +21,11 @@ page('/:slug', function(context) {
   newMenuItem.classList.add('is-active');
   newPage.classList.add('is-active');
 
+  if (!isInitialLoad) {
+    newPage.querySelector('h2[tabindex="-1"]').focus();
+  } else {
+    isInitialLoad = false;
+  }
 });
 
 page({
