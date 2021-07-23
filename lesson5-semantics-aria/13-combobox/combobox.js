@@ -170,6 +170,10 @@
                 this.hide();
             } else {
                 // FIXME: ChromeVox reports the wrong list size and position
+                for (let index = 0; index < foundItems; index++) {
+                    this.visibleItems[index].setAttribute('aria-posinset', index + 1);
+                    this.visibleItems[posInSet].setAttribute('aria-setsize', foundItems);
+                }
             }
         },
 
@@ -237,6 +241,7 @@
             newActive.classList.add('active');
 
             // FIXME: need to ensure focus stays on textbox, but report active list option
+            this.textbox.setActiveDescendant(newActive);
         }
     };
 

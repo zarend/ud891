@@ -35,11 +35,11 @@ main {
   content: '▶';
 }
 
-.disclosure-button.expanded .icon::after {
+.disclosure-button[aria-expanded="true"] .icon::after {
   content: '▼';
 }
 
-.disclosure-content.hidden {
+.disclosure-content[aria-hidden="true"] {
   visibility: hidden;
   opacity: 0;
 }
